@@ -19,10 +19,10 @@
       }
     },
 
-    indexElements: function () { //Generates index of all elements to inject dummy in.
-      var textTags = document.querySelectorAll('p, span');
+    indexElements: function () { //Generates index of all elements to inject dummy text in.
+      var textTags = document.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, l1. a');
       if (textTags == null || textTags.length <= 0) {
-        console.log("Dummy.js Debug: No 'p' or 'span' elements found");
+        console.log('Dummy.js Debug: No supported text elements found.');
         return;
       }
 
@@ -47,13 +47,14 @@
       for (var i = 0; i < dummyTextTags; i++) {
         var currentElement = dummyTextTags[i];
         var dummyAttribute = currentElement.getAttribute('data-dummy');
-        var parameters = dummyAttribute.split('-'); //I have doubts with this line. "3-para".split(-)?
+        var parameters = dummyAttribute.split('-');
         currentElement.textContent = this.lorem(parameters[1], parameters[0]);
       }
     },
 
-    lorem: function (type, number) { //Returns lorem ipsum text.
-      const ipsumArray = []; //Stores considerably large dictionary of ipsum words.
+    lorem: function (type, number) {
+      var ipsumText = 'lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqut ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum';
+      var ipsumArray = ipsumText.split(' ');
       switch (type) {
         case 'word':
           return this.loremWords(ipsumArray, number);
@@ -63,6 +64,7 @@
           return this.loremParagraphs(ipsumArray, number);
         default :
           console.log("Invalid 'type' parameter supplied to Dummy.lorem(type, number)");
+          return;
       }
     },
 
