@@ -51,4 +51,4 @@ Thanks for taking the time to explore my library. If this has helped you, please
 
 ## Thanks
 
-I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word. I would also like to extend my gratitude to @labsvisual for helping me out with this library from the very beginning.
+I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word. I would also like to extend my gratitude to [@labsvisual](https://github.com/labsvisual) for helping me out with this library from the very beginning.
