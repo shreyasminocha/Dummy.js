@@ -13,11 +13,13 @@ This section will be updated once we have an official website for Dummy.js.
 ```html
   <body>
 
-    <h1 data-dummy="5-word"></h1>
-    <p data-dummy="6-sentence"></p>
-    <p data-dummy="1-paragraph"></p>
+    <!-- The /s plural is just for the semantics. You are well-off with 5,sentence -->
+
+    <h1 data-dummy="5,word(/s)"></h1>
+    <p data-dummy="6,sentence"></p>
+    <p data-dummy="1,paragraph"></p>
     ...
-    <script src="/path/to/Dummy.min.js"></script>
+    <script src="/path/to/dummy.min.js"></script>
 
   </body>
 ```
@@ -29,21 +31,17 @@ Here's a [working demo(broken at the moment)](https://github.com/shreyasminocha/
 
 This section will be updated once Dummy.js has an official CDN.
 
-## Important
-
-Take care to include Dummy.js right before your `<\body>` tag and not in the `<head>` section. Wondering why? Dummy.js creates an index of all the already loaded elements on your html page once it is loaded. If you place it in the `<head>` section, it will load before any of the elements on your page and not be able to index your elements.
-
 ## Disable
 
 If you would like to disable Dummy.js, this can be done without removing it from your web page.
 
 ```html
-<script src="/path/to/Dummy.js#disabled"></script>
+<script src="/path/to/Dummy.js" data-dummy="disable"></script>
 ```
 
 ## MIT License
 
-I have licensed this library under the MIT License(look for the `LICENSE` file). For those who don't know, it means that you can use this project for commercial projects, modify it, distribute it as well as use it for private use. Enjoy!
+I have licensed this library under the MIT License (look for the `LICENSE` file). For those who don't know, it means that you can use this project for commercial projects, modify it, distribute it as well as use it for private use. Enjoy!
 
 ## Contributing
 
@@ -51,4 +49,4 @@ Thanks for taking the time to explore my library. If this has helped you, please
 
 ## Thanks
 
-I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word. I would also like to extend my gratitude to [@labsvisual](https://github.com/labsvisual) for helping me out with this library from the very beginning.
+I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word. 
