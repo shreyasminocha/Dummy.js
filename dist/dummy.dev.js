@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(function (_root) {
 
             var Dummy = {},
                 dummyTextFillTags = [],
@@ -173,5 +173,5 @@
             };
 
             Dummy.init();
-})();
+})(window || {});
 //# sourceMappingURL=dummy.dev.js.map

@@ -3,12 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
+        <style media="screen">
+
+            p.one { color: red; }
+            span.two { color: blue; }
+
+        </style>
+        <script src="../dist/dummy.dev.js" data-dummy="debug"></script>
     </head>
     <body>
 
-        <p data-dummy-fill="3,paragraphs"></p>
-
-        <script src="../dist/dummy.dev.js" data-dummy="debug"></script>
+        <p class="one" data-dummy-fill="3,paragraphs"></p>
+        <span class="two" data-dummy-fill="10,sentences"></span>
 
     </body>
 </html>

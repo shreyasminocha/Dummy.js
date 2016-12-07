@@ -1,4 +1,4 @@
-( () => {
+( ( _root ) => {
 
     let Dummy             = {}
       , dummyTextFillTags = []
@@ -201,4 +201,4 @@
 
     Dummy.init();
 
-})();
+} )( window || {} );
