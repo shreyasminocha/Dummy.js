@@ -1,9 +1,9 @@
 ( () => {
 
-    let Dummy         = {}
-      , dummyTextTags = []
-      , isEnabled     = true
-      , debug         = true;
+    let Dummy             = {}
+      , dummyTextFillTags = []
+      , isEnabled         = true
+      , debug             = true;
 
     Dummy = {
 
@@ -22,7 +22,7 @@
                 const currentTag = scriptTags[ i ]
                      , src       = currentTag.getAttribute( 'src' );
 
-                if ( src && ( src.toLowerCase().indexOf( 'dummy' ) > 0 ) ) {
+                if( src && ( src.toLowerCase().indexOf( 'dummy' ) > 0 ) ) {
 
                     let configTags = currentTag.getAttribute( 'data-dummy' );
 
@@ -56,41 +56,47 @@
 
         },
 
-        indexElements: function () { //Generates index of all elements to inject dummy in.
+        indexElements() {
 
-            var textTags = document.querySelectorAll('p, span');
+            const textTags = document.querySelectorAll( 'p, span' );
 
-            if (textTags == null || textTags.length <= 0) {
-                console.log("Dummy.js Debug: No 'p' or 'span' elements found");
+            if( !textTags || textTags.length === 0 ) {
+
+                this.log( 'no \'p\' or \'span\' elements found' );
                 return;
+
             }
 
-            for (var i = 0; i < textTags.length(); i++) {
+            for( let i = 0; i < textTags.length; i++ ) {
 
-                var currentElement = textTags[i];
-                var dummyDataValue = currentElement.getAttribute('data-dummy');
+                const currentElement = textTags[ i ]
+                    , dummyDataValue = currentElement.getAttribute( 'data-dummy-fill' );
 
-                if (dummyDataValue == null) {
-                    continue;
-                } else {
-                    dummyTextTags.push(currentTag);
+                if( dummyDataValue !== null ) {
+
+                    dummyTextFillTags.push( currentElement );
+
                 }
 
             }
 
-            if (dummyTextTags.length() == 0) {
-                console.log("Dummy.js Debug: No elements with 'data-dummy' attribute found");
+            if( dummyTextFillTags.length === 0 ) {
+
+                this.log( 'no DummyJS-enabled DOM elements found in current tree' );
+
             } else {
-                console.log('Dummy.js: Indexed ' + dummyTextTags.length() + ' elements.');
+
+                this.log( `index ${ dummyTextFillTags.length } elements in current DOM tree` );
+
             }
 
         },
 
         dummy: function () {
 
-            for (var i = 0; i < dummyTextTags; i++) {
+            for (var i = 0; i < dummyTextFillTags; i++) {
 
-                var currentElement = dummyTextTags[i];
+                var currentElement = dummyTextFillTags[i];
                 var dummyAttribute = currentElement.getAttribute('data-dummy');
                 var parameters = dummyAttribute.split('-'); //I have doubts with this line. "3-para".split(-)?
 
@@ -167,7 +173,7 @@
 
             this.resolveConfig();
 
-            if (!isEnabled) {
+            if( !isEnabled ) {
                 return;
             }
 
