@@ -4,30 +4,52 @@
 
             var Dummy = {},
                 dummyTextTags = [],
-                isEnabled = true;
+                isEnabled = true,
+                debug = true;
 
             Dummy = {
+                        log: function log(message) {
 
+                                    if (debug) console.debug('Dummy.js Debug: ' + message);
+                        },
                         resolveConfig: function resolveConfig() {
-                                    //Checks if disabled tag is present.
+                                    var _this = this;
 
                                     var scriptTags = document.getElementsByTagName('script');
 
-                                    for (var i = 0; i < scriptTags.length(); i++) {
+                                    for (var i = 0; i < scriptTags.length; i++) {
 
-                                                var currentTag = scriptTags[i];
-                                                var src = currentTag.getAttribute('src');
+                                                var _currentTag = scriptTags[i],
+                                                    src = _currentTag.getAttribute('src');
 
-                                                if (src == null || src.toLowerCase().indexOf('dummy') == -1) {
-                                                            continue;
-                                                }
+                                                if (src && src.toLowerCase().indexOf('dummy') > 0) {
 
-                                                if (src.indexOf('#disabled') != -1) {
-                                                            isEnabled = false;
-                                                            break;
+                                                            var configTags = _currentTag.getAttribute('data-dummy');
+
+                                                            this.log('found anchoring tag in DOM');
+
+                                                            if (!configTags) {
+
+                                                                        this.log('did not find any `data-dummy` attribute; configuration done');
+                                                                        return;
+                                                            }
+
+                                                            configTags = configTags.split(',');
+                                                            configTags.forEach(function (configTag) {
+
+                                                                        _this.log('resolved; `' + configTag + '`');
+
+                                                                        if (configTag === 'debug') debug = true;
+                                                                        if (configTag === 'disable' || configTag === 'disabled') {
+
+                                                                                    isEnabled = false;
+                                                                                    _this.log('SCRIPT DISABLED');
+                                                                        }
+                                                            });
                                                 }
                                     }
                         },
+
 
                         indexElements: function indexElements() {
                                     //Generates index of all elements to inject dummy in.
@@ -147,4 +169,4 @@
 
             Dummy.init(); //Call for global context.
 })();
-//# sourceMappingURL=dummy.min.js.map
+//# sourceMappingURL=dummy.dev.js.map

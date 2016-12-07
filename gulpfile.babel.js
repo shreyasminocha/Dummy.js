@@ -14,7 +14,7 @@ gulp.task( 'test', () => {
 
 } );
 
-gulp.task( 'compile', () => {
+gulp.task( 'compile:prod', () => {
 
     return gulp.src( [ './src/**/*.js' ] )
                .pipe( plumber() )
@@ -23,12 +23,26 @@ gulp.task( 'compile', () => {
                }) )
                .pipe( concat( 'dummy.min.js' ) )
                .pipe( sourcemaps.init() )
-            //    .pipe( uglify( {
-            //         compress: {
-            //             negate_iife: false // jshint ignore:line
-            //         },
-            //         outSourceMaps: true
-            //     } ) )
+               .pipe( uglify( {
+                    compress: {
+                        negate_iife: false // jshint ignore:line
+                    },
+                    outSourceMaps: true
+                } ) )
+               .pipe( sourcemaps.write( './' ) )
+               .pipe( gulp.dest( './dist' ) );
+
+} );
+
+gulp.task( 'compile:dev', () => {
+
+    return gulp.src( [ './src/**/*.js' ] )
+               .pipe( plumber() )
+               .pipe( babel({
+                   presets: [ 'es2015' ]
+               }) )
+               .pipe( concat( 'dummy.dev.js' ) )
+               .pipe( sourcemaps.init() )
                .pipe( sourcemaps.write( './' ) )
                .pipe( gulp.dest( './dist' ) );
 
@@ -36,7 +50,8 @@ gulp.task( 'compile', () => {
 
 gulp.task( 'watch', () => {
 
-    gulp.watch( [ './src/**/*.*', './tests/**/*.*' ], [ 'compile', 'test' ] );
+
+    gulp.watch( [ './src/**/*.*' ], [ 'compile:dev', 'test' ] );
 
 } );
 

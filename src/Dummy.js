@@ -1,28 +1,57 @@
-(function () {
+( () => {
 
-    var Dummy = {}; //Stores Dummy.js codebase.
-    var dummyTextTags = []; //Array of tags with 'data-dummy' attribute
-    var isEnabled = true;
+    let Dummy         = {}
+      , dummyTextTags = []
+      , isEnabled     = true
+      , debug         = true;
 
     Dummy = {
 
-        resolveConfig: function () { //Checks if disabled tag is present.
+        log( message ) {
 
-            var scriptTags = document.getElementsByTagName('script');
+            if( debug ) console.debug( `Dummy.js Debug: ${ message }` );
 
-            for (var i = 0; i < scriptTags.length(); i++) {
+        },
 
-                var currentTag = scriptTags[i];
-                var src = currentTag.getAttribute('src');
+        resolveConfig() {
 
-                if (src == null || src.toLowerCase().indexOf('dummy') == -1) {
-                    continue;
+            const scriptTags = document.getElementsByTagName( 'script' );
+
+            for( let i = 0; i < scriptTags.length; i++ ) {
+
+                const currentTag = scriptTags[ i ]
+                     , src       = currentTag.getAttribute( 'src' );
+
+                if ( src && ( src.toLowerCase().indexOf( 'dummy' ) > 0 ) ) {
+
+                    let configTags = currentTag.getAttribute( 'data-dummy' );
+
+                    this.log( 'found anchoring tag in DOM' );
+
+                    if( !configTags ) {
+
+                        this.log( 'did not find any `data-dummy` attribute; configuration done' );
+                        return;
+
+                    }
+
+                    configTags = configTags.split( ',' );
+                    configTags.forEach( ( configTag ) => {
+
+                        this.log( `resolved; \`${ configTag }\`` );
+
+                        if( configTag === 'debug' ) debug = true;
+                        if( configTag === 'disable' || configTag === 'disabled' ) {
+
+                            isEnabled = false;
+                            this.log( 'SCRIPT DISABLED' );
+
+                        }
+
+                    } );
+
                 }
 
-                if (src.indexOf('#disabled') != -1) {
-                isEnabled = false;
-                    break;
-                }
             }
 
         },
