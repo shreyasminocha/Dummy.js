@@ -8,6 +8,15 @@
                 debug = true;
 
             Dummy = {
+                        getConfig: function getConfig() {
+
+                                    return {
+
+                                                isEnabled: isEnabled,
+                                                debug: debug
+
+                                    };
+                        },
                         log: function log(message) {
 
                                     if (debug) console.debug('Dummy.js Debug: ' + message);
@@ -64,7 +73,7 @@
                                                 var currentElement = textTags[i],
                                                     dummyDataValue = currentElement.getAttribute('data-dummy-fill');
 
-                                                if (dummyDataValue !== null) {
+                                                if (dummyDataValue !== null && dummyDataValue !== '' && dummyDataValue !== 'disable') {
 
                                                             dummyTextFillTags.push(currentElement);
                                                 }
@@ -72,7 +81,7 @@
 
                                     if (dummyTextFillTags.length === 0) {
 
-                                                this.log('no DummyJS-enabled DOM elements found in current tree');
+                                                this.log('no DummyJS-enabled DOM element(s) found in current tree');
                                     } else {
 
                                                 this.log('indexed ' + dummyTextFillTags.length + ' elements in current DOM tree');
@@ -87,6 +96,8 @@
 
                                                 var currentElement = dummyTextFillTags[i],
                                                     dummyConfig = currentElement.getAttribute('data-dummy-fill').split(',');
+
+                                                if (dummyConfig[0] === 'disable' || dummyConfig[0] === '') continue;
 
                                                 currentElement.innerText = this.generateLoremBlock(dummyConfig[1], dummyConfig[0]);
                                     }
@@ -159,15 +170,21 @@
                         },
 
                         init: function init() {
+                                    var _this2 = this;
 
-                                    this.resolveConfig();
+                                    window.onload = function () {
 
-                                    if (!isEnabled) {
-                                                return;
-                                    }
+                                                _this2.resolveConfig();
 
-                                    this.indexElements();
-                                    this.dummy();
+                                                if (!isEnabled) {
+                                                            return;
+                                                }
+
+                                                _this2.indexElements();
+                                                _this2.dummy();
+
+                                                _root.dummy = _this2;
+                                    };
                         }
 
             };

@@ -7,6 +7,17 @@
 
     Dummy = {
 
+        getConfig() {
+
+            return {
+
+                isEnabled,
+                debug,
+
+            };
+
+        },
+
         log( message ) {
 
             if( debug ) console.debug( `Dummy.js Debug: ${ message }` );
@@ -72,7 +83,7 @@
                 const currentElement = textTags[ i ]
                     , dummyDataValue = currentElement.getAttribute( 'data-dummy-fill' );
 
-                if( dummyDataValue !== null ) {
+                if( dummyDataValue !== null && ( dummyDataValue !== '' && dummyDataValue !== 'disable' ) ) {
 
                     dummyTextFillTags.push( currentElement );
 
@@ -82,7 +93,7 @@
 
             if( dummyTextFillTags.length === 0 ) {
 
-                this.log( 'no DummyJS-enabled DOM elements found in current tree' );
+                this.log( 'no DummyJS-enabled DOM element(s) found in current tree' );
 
             } else {
 
@@ -101,6 +112,8 @@
 
                 const currentElement = dummyTextFillTags[ i ]
                     , dummyConfig    = currentElement.getAttribute( 'data-dummy-fill' ).split( ',' );
+
+                if( dummyConfig[ 0 ] === 'disable' || dummyConfig[ 0 ] === '' ) continue;
 
                 currentElement.innerText = this.generateLoremBlock( dummyConfig[ 1 ], dummyConfig[ 0 ] );
 
@@ -186,14 +199,20 @@
 
         init: function () {
 
-            this.resolveConfig();
+            window.onload = () => {
 
-            if( !isEnabled ) {
-                return;
-            }
+                this.resolveConfig();
 
-            this.indexElements();
-            this.dummy();
+                if( !isEnabled ) {
+                    return;
+                }
+
+                this.indexElements();
+                this.dummy();
+
+                _root.dummy = this;
+
+            };
 
         },
 
