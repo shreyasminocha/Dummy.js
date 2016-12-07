@@ -1,113 +1,160 @@
-(function () {
+( () => {
 
-    var Dummy = {}; //Stores Dummy.js codebase.
-    var dummyTextTags = []; //Array of tags with 'data-dummy' attribute
-    var isEnabled = true;
+    let Dummy             = {}
+      , dummyTextFillTags = []
+      , isEnabled         = true
+      , debug             = true;
 
     Dummy = {
 
-        resolveConfig: function () { //Checks if disabled tag is present.
+        log( message ) {
 
-            var scriptTags = document.getElementsByTagName('script');
+            if( debug ) console.debug( `Dummy.js Debug: ${ message }` );
 
-            for (var i = 0; i < scriptTags.length(); i++) {
+        },
 
-                var currentTag = scriptTags[i];
-                var src = currentTag.getAttribute('src');
+        resolveConfig() {
 
-                if (src == null || src.toLowerCase().indexOf('dummy') == -1) {
-                    continue;
+            const scriptTags = document.getElementsByTagName( 'script' );
+
+            for( let i = 0; i < scriptTags.length; i++ ) {
+
+                const currentTag = scriptTags[ i ]
+                     , src       = currentTag.getAttribute( 'src' );
+
+                if( src && ( src.toLowerCase().indexOf( 'dummy' ) > 0 ) ) {
+
+                    let configTags = currentTag.getAttribute( 'data-dummy' );
+
+                    this.log( 'found anchoring tag in DOM' );
+
+                    if( !configTags ) {
+
+                        this.log( 'did not find any `data-dummy` attribute; configuration done' );
+                        return;
+
+                    }
+
+                    configTags = configTags.split( ',' );
+                    configTags.forEach( ( configTag ) => {
+
+                        this.log( `resolved; \`${ configTag }\`` );
+
+                        if( configTag === 'debug' ) debug = true;
+                        if( configTag === 'disable' || configTag === 'disabled' ) {
+
+                            isEnabled = false;
+                            this.log( 'SCRIPT DISABLED' );
+
+                        }
+
+                    } );
+
                 }
 
-                if (src.indexOf('#disabled') != -1) {
-                isEnabled = false;
-                    break;
-                }
             }
 
         },
 
-        indexElements: function () { //Generates index of all elements to inject dummy in.
+        indexElements() {
 
-            var textTags = document.querySelectorAll('p, span');
+            const textTags = document.querySelectorAll( 'p, span' );
 
-            if (textTags == null || textTags.length <= 0) {
-                console.log("Dummy.js Debug: No 'p' or 'span' elements found");
+            if( !textTags || textTags.length === 0 ) {
+
+                this.log( 'no \'p\' or \'span\' elements found' );
                 return;
+
             }
 
-            for (var i = 0; i < textTags.length(); i++) {
+            for( let i = 0; i < textTags.length; i++ ) {
 
-                var currentElement = textTags[i];
-                var dummyDataValue = currentElement.getAttribute('data-dummy');
+                const currentElement = textTags[ i ]
+                    , dummyDataValue = currentElement.getAttribute( 'data-dummy-fill' );
 
-                if (dummyDataValue == null) {
-                    continue;
-                } else {
-                    dummyTextTags.push(currentTag);
+                if( dummyDataValue !== null ) {
+
+                    dummyTextFillTags.push( currentElement );
+
                 }
 
             }
 
-            if (dummyTextTags.length() == 0) {
-                console.log("Dummy.js Debug: No elements with 'data-dummy' attribute found");
+            if( dummyTextFillTags.length === 0 ) {
+
+                this.log( 'no DummyJS-enabled DOM elements found in current tree' );
+
             } else {
-                console.log('Dummy.js: Indexed ' + dummyTextTags.length() + ' elements.');
-            }
 
-        },
-
-        dummy: function () {
-
-            for (var i = 0; i < dummyTextTags; i++) {
-
-                var currentElement = dummyTextTags[i];
-                var dummyAttribute = currentElement.getAttribute('data-dummy');
-                var parameters = dummyAttribute.split('-'); //I have doubts with this line. "3-para".split(-)?
-
-                currentElement.textContent = this.lorem(parameters[1], parameters[0]);
+                this.log( `indexed ${ dummyTextFillTags.length } elements in current DOM tree` );
 
             }
 
         },
 
-        lorem: function (type, number) { //Returns lorem ipsum text.
+        dummy() {
 
-            const ipsumArray = []; //Stores considerably large dictionary of ipsum words.
+            for( let i = 0; i < dummyTextFillTags.length; i++ ) {
 
-            switch (type) {
+                // we're looking at something like:
+                // data-dummy-fill="3,sentences"
+
+                const currentElement = dummyTextFillTags[ i ]
+                    , dummyConfig    = currentElement.getAttribute( 'data-dummy-fill' ).split( ',' );
+
+                currentElement.innerText = this.generateLoremBlock( dummyConfig[ 1 ], dummyConfig[ 0 ] );
+
+            }
+
+        },
+
+        generateLoremBlock( type, count ) {
+
+            const ipsumArray = 'lorem,ipsum,dolor,sit,amet,consectetur,adipiscing,elit,proin,accumsan,lacus,ut,consectetur,tristique,ante,est,vehicula,risus,eget,ornare,tortor,libero,sed,lorem,donec,porttitor,felis,non,massa,porttitor,vestibulum,maecenas,lorem,urna,pretium,sit,amet,sodales,in,semper,a,leo,morbi,luctus,nisl,id,eleifend,lacinia,quam,orci,consequat,lacus,sit,amet,luctus,neque,dui,eu,felis,nullam,condimentum,nibh,sed,tortor,pulvinar,at,consequat,sem,viverra,ut,auctor,mauris,euismod,vulputate,pharetra,suspendisse,quis,bibendum,eros,duis,auctor,egestas,venenatis,sed,volutpat,magna,non,volutpat,convallis,vivamus,maximus,sit,amet,leo,in,malesuada,aliquam,ultricies,risus,a,nisi,laoreet,luctus,nullam,ut,interdum,orci,vestibulum,maximus,turpis,vel,sagittis,ullamcorper,sed,ultrices,velit,at,aliquam,placerat,suspendisse,sit,amet,velit,mollis,suscipit,diam,id,viverra,ligula,vestibulum,mollis,cursus,felis,sodales,auctor,magna,luctus,eu,nullam,scelerisque,massa,ut,porta,pulvinar,diam,neque,ornare,quam,vitae,placerat,ligula,lectus,a,velit,vestibulum,ante,ipsum,primis,in,faucibus,orci,luctus,et,ultrices,posuere,cubilia,curae,aliquam,malesuada,interdum,eros,sagittis,sollicitudin,vivamus,quis,mollis,lorem,in,tincidunt,ante,mauris,lacus,justo,egestas,ut,ipsum,a,consectetur,auctor,neque,proin,at,malesuada,felis,ac,maximus,diam,aenean,placerat,purus,elit,ac,sodales,arcu,finibus,non,maecenas,facilisis,felis,non,neque,posuere,in,varius,urna,dignissim,proin,dapibus,orci,ac,quam,congue,et,gravida,quam,egestas,etiam,a,mi,urna,cras,ipsum,neque,posuere,a,ligula,vitae,molestie,convallis,justo,maecenas,et,sagittis,lectus,fusce,justo,ipsum,consectetur,eget,diam,auctor,sodales,consequat,ante,aliquam,dignissim,mi,vitae,nunc,posuere,sed,blandit,urna,tempus,lorem,ipsum,dolor,sit,amet,consectetur,adipiscing,elit,quisque,dapibus,ligula,ut,convallis,congue,aenean,vitae,mauris,scelerisque,aliquet,lectus,in,blandit,sapien,proin,in,risus,eget,ligula,volutpat,ornare,nunc,aliquet,ligula,quam,donec,ac,ligula,mollis,venenatis,leo,vel,ornare,leo,donec,erat,dolor,ullamcorper,sed,felis,ac,semper,laoreet,velit,sed,vel,urna,fringilla,viverra,lectus,at,egestas,risus,nam,mattis,ligula,ligula,a,ultricies,nisl,egestas,vitae,vivamus,consectetur,elit,ut,condimentum,semper,proin,dapibus,justo,nec,arcu,viverra,eu,rutrum,est,tempus,nam,sit,amet,sapien,in,mauris,tincidunt,tincidunt,non,vel,purus,mauris,auctor,libero,diam,ac,gravida,velit,varius,sit,amet,pellentesque,quis,iaculis,ex,vestibulum,facilisis,elit,quis,ornare,hendrerit,nunc,tellus,magna,lacinia,a,dictum,in,egestas,quis,ex,duis,scelerisque,tempus,ex,pellentesque,quis,sodales,odio,praesent,id,bibendum,mauris,aliquam,ut,purus,interdum,molestie,mauris,non,molestie,tellus,sed,non,lacus,velit,donec,id,tincidunt,risus,eu,elementum,lectus,nunc,bibendum,metus,sagittis,vulputate,convallis,proin,quis,diam,vitae,leo,lacinia,ultricies,donec,ac,lorem,nec,risus,luctus,pellentesque,aliquam,sed,neque,pretium,tristique,est,ullamcorper,consequat,metus,sed,vel,enim,faucibus,hendrerit,mauris,ut,consequat,neque,suspendisse,non,orci,mi,cras,euismod,purus,quis,mollis,consequat,quisque,urna,sapien,cursus,at,semper,a,lacinia,ac,nibh,ut,elit,dui,lacinia,in,lectus,aliquam,rutrum,venenatis,erat,nulla,dui,augue,gravida,a,tristique,feugiat,dapibus,a,lacus,praesent,luctus,nunc,quis,maximus,porta,donec,lacinia,lorem,quis,vestibulum,malesuada,aenean,molestie,felis,ac,augue,fringilla,efficitur,sed,ultricies,suscipit,dolor,viverra,semper,ligula,semper,ac,donec,ultricies,interdum,aliquet,praesent,cursus,diam,non,nulla,commodo,sollicitudin,duis,sit,amet,laoreet,metus,donec,dolor,erat,sagittis,eget,tortor,a,venenatis,varius,diam,aliquam,rhoncus,orci,lectus,non,porta,erat,convallis,ut,nulla,condimentum,mi,sit,amet,posuere,tempus,suspendisse,quis,dolor,sed,urna,lacinia,imperdiet,vitae,vel,nulla,nulla,eu,urna,et,lectus,tincidunt,interdum,quis,sit,amet,risus,etiam,rhoncus,neque,a,arcu,lobortis,in,blandit,nunc,mollis,nunc,efficitur,mauris,et,feugiat,consectetur,risus,nisi,consectetur,nunc,vitae,euismod,eros,nulla,sed,ipsum,praesent,convallis,augue,sed,laoreet,feugiat,eros,purus,accumsan,neque,sed,tincidunt,neque,mauris,et,risus,aenean,bibendum,facilisis,dapibus,integer,velit,quam,tempus,in,metus,vel,pretium,faucibus,libero,ut,ultrices,efficitur,velit,quisque,tempus,a,justo,hendrerit,aliquam,proin,magna,orci,condimentum,at,metus,sed,sodales,porttitor,massa,cras,iaculis,ligula,non,iaculis,suscipit,proin,mollis,turpis,iaculis,aliquet,erat,sit,amet,aliquam,urna,proin,vitae,ultrices,est,nec,interdum,dolor,curabitur,urna,metus,convallis,at,ante,vitae,ultrices,scelerisque,mi,nam,id,ultricies,eros,etiam,vestibulum,risus,justo,sed,dignissim,lorem,posuere,nec,sed,id,massa,quis,augue,scelerisque,molestie,eu,ut,neque,duis,et,mollis,justo,a,pellentesque,lacus,pellentesque,id,libero,et,urna,pretium,pharetra,id,eget,nunc,duis,in,nunc,felis,nam,non,diam,a,augue,pulvinar,suscipit,sed,venenatis,lectus,ante,in,condimentum,purus,finibus,mattis,tristique,vestibulum,dapibus,nibh,in,urna,vestibulum,accumsan,aliquam,tincidunt,urna,nec,lacus,eleifend,imperdiet,suspendisse,dictum,erat,eu,purus,maximus,blandit,phasellus,ut,luctus,tortor,ac,consequat,massa,vestibulum,nibh,elit,tincidunt,eget,tempus,aliquet,volutpat,ut,nisi,interdum,et,malesuada,fames,ac,ante,ipsum,primis,in,faucibus,interdum,et,malesuada,fames,ac,ante,ipsum,primis,in,faucibus,phasellus,ipsum,ex,consequat,sit,amet,efficitur,rutrum,sodales,in,lorem,ut,id,leo,euismod,ex,auctor,luctus,non,nec,nibh,phasellus,ullamcorper,dolor,in,lacus,finibus,a,pretium,mi,consequat,nulla,quis,eros,rutrum,tortor,commodo,pellentesque,praesent,accumsan,mi,scelerisque,finibus,imperdiet,nulla,diam,scelerisque,nulla,eget,gravida,dolor,felis,vel,velit,class,aptent,taciti,sociosqu,ad,litora,torquent,per,conubia,nostra,per,inceptos,himenaeos,curabitur,venenatis,elit,ut,sem,faucibus,mattis,quis,eget,tortor,proin,et,neque,et,leo,mattis,faucibus,proin,sollicitudin,erat,a,neque,euismod,suscipit,aliquam,sed,malesuada,tellus,nec,feugiat,massa,nam,vitae,elementum,enim,quisque,nec,ultricies,lectus,cras,a,viverra,elit,cras,quis,arcu,urna,in,iaculis,nibh,a,tellus,congue,posuere,aliquam,non,dapibus,velit,suspendisse,a,semper,metus,pellentesque,ornare,tortor,nec,molestie,dignissim,magna,ipsum,consectetur,sapien,viverra,vehicula,urna,est,fermentum,diam,sed,cursus,risus,eget,laoreet,molestie,turpis,risus,dapibus,arcu,id,semper,nisi,eros,in,urna,proin,imperdiet,orci,pulvinar,dui,hendrerit,gravida,in,posuere,erat,sit,amet,tellus,aliquam,sagittis,mollis,justo,maximus'.split( ',' ); //Stores considerably large dictionary of ipsum words.
+
+            switch( type ) {
+
                 case 'word':
-                    return this.loremWords(ipsumArray, number);
+                case 'words':
+                    return this.loremWords( ipsumArray, count );
+
                 case 'sentence':
-                    return this.loremSentences(ipsumArray, number);
+                case 'sentences':
+                    return this.loremSentences( ipsumArray, count );
+
                 case 'paragraph':
-                    return this.loremParagraphs(ipsumArray, number);
-                default :
-                    console.log("Invalid 'type' parameter supplied to Dummy.lorem(type, number)");
+                case 'paragraphs':
+                    return this.loremParagraphs( ipsumArray, count );
+                default:
+                    this.log( 'invalid \'type\' parameter supplied' );
+
             }
 
         },
 
-        loremWords: function (dict, number) { //String[] dict is an array of ipsum words.
+        loremWords( dict, number ) {
 
-            var ipsumString = '';
+            let ipsumString = '';
 
-            for (var i = 0; i < number; i++) {
-                ipsumString = ipsumString + dict[Math.floor(Math.random() * (ipsumArray.length()))] + ' ';
+            for( let i = 0; i < number; i++ ) {
+
+                ipsumString = ipsumString + dict[ Math.floor( Math.random() * ( dict.length ) ) ] + ' ';
+
             }
 
             return ipsumString;
 
         },
 
-        loremSentences: function (dict, number) {
+        loremSentences( dict, number ) {
 
-            var ipsumString = '';
+            let ipsumString = '';
 
-            for (var i = 0; i < number; i++) {
+            for( let i = 0; i < number; i++ ) {
 
-                sentenceLength = Math.floor(Math.random() * (5) + 3);
-                ipsumString = ipsumString + this.capitalize(this.loremWords(dict, 1)) + this.loremWords(dict, sentenceLength) + this.loremWords(dict, 1).trim() + '. ';
+                const sentenceLength = Math.floor( Math.random() * ( 4 ) + 7 );
+
+                ipsumString += this.capitalize( this.loremWords( dict, 1 ) ) + this.loremWords( dict, sentenceLength ) + this.loremWords( dict, 1 ).trim() + '. ';
 
             }
 
@@ -117,12 +164,13 @@
 
         loremParagraphs: function (dict, number) {
 
-            var ipsumString = '';
+            let ipsumString = '';
 
-            for (var i = 0; i < number; i++) {
+            for( let i = 0; i < number; i++ ) {
 
-                paragraphLength = Math.floor(Math.random() * (4) + 7);
-                ipsumString += this.loremSentences(dict, paragraphLength);
+                const paragraphLength = Math.floor( Math.random() * ( 4 ) + 7 );
+
+                ipsumString += this.loremSentences( dict, paragraphLength ).trim() + '\r\n\r\n';
 
             }
 
@@ -130,15 +178,17 @@
 
         },
 
-        capitalize: function (str) { //Helper function
-            return str.charAt(0).toUpperCase() + str.subString(1, str.length());
+        capitalize: function (str) {
+
+            return str.charAt( 0 ).toUpperCase() + str.substring( 1, str.length );
+
         },
 
-        init: function () { //Initializes script and calls this.dummy()
+        init: function () {
 
             this.resolveConfig();
 
-            if (!isEnabled) {
+            if( !isEnabled ) {
                 return;
             }
 
@@ -149,6 +199,6 @@
 
     };
 
-    Dummy.init(); //Call for global context.
+    Dummy.init();
 
 })();
