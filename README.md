@@ -15,9 +15,9 @@ This section will be updated once we have an official website for Dummy.js.
 
     <!-- The /s plural is just for the semantics. You are well-off with 5,sentence -->
 
-    <h1 data-dummy="5,word(/s)"></h1>
-    <p data-dummy="6,sentence"></p>
-    <p data-dummy="1,paragraph"></p>
+    <h1 data-dummy-fill="5,word(/s)"></h1>
+    <p data-dummy-fill="6,sentence"></p>
+    <p data-dummy-fill="1,paragraph"></p>
     ...
     <script src="/path/to/dummy.min.js"></script>
 
@@ -49,4 +49,4 @@ Thanks for taking the time to explore my library. If this has helped you, please
 
 ## Thanks
 
-I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word. 
+I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word.
