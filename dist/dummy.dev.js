@@ -75,25 +75,23 @@
                                                 this.log('no DummyJS-enabled DOM elements found in current tree');
                                     } else {
 
-                                                this.log('index ' + dummyTextFillTags.length + ' elements in current DOM tree');
+                                                this.log('indexd ' + dummyTextFillTags.length + ' elements in current DOM tree');
                                     }
                         },
-
-
                         dummy: function dummy() {
 
                                     for (var i = 0; i < dummyTextFillTags; i++) {
 
-                                                var currentElement = dummyTextFillTags[i];
-                                                var dummyAttribute = currentElement.getAttribute('data-dummy');
-                                                var parameters = dummyAttribute.split('-'); //I have doubts with this line. "3-para".split(-)?
+                                                // we're looking at something like:
+                                                // data-dummy-fill="3,sentences"
 
-                                                currentElement.textContent = this.lorem(parameters[1], parameters[0]);
+                                                var currentElement = dummyTextFillTags[i],
+                                                    dummyConfig = currentElement.getAttribute('data-dummy-fill').split(',');
+
+                                                currentElement.innerText = this.generateLoremBlock(parameters[1], parameters[0]);
                                     }
                         },
-
-                        lorem: function lorem(type, number) {
-                                    //Returns lorem ipsum text.
+                        generateLoremBlock: function generateLoremBlock(type, count) {
 
                                     var ipsumArray = []; //Stores considerably large dictionary of ipsum words.
 
@@ -108,6 +106,7 @@
                                                             console.log("Invalid 'type' parameter supplied to Dummy.lorem(type, number)");
                                     }
                         },
+
 
                         loremWords: function loremWords(dict, number) {
                                     //String[] dict is an array of ipsum words.

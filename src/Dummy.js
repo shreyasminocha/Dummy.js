@@ -86,27 +86,29 @@
 
             } else {
 
-                this.log( `index ${ dummyTextFillTags.length } elements in current DOM tree` );
+                this.log( `indexd ${ dummyTextFillTags.length } elements in current DOM tree` );
 
             }
 
         },
 
-        dummy: function () {
+        dummy() {
 
-            for (var i = 0; i < dummyTextFillTags; i++) {
+            for( let i = 0; i < dummyTextFillTags; i++ ) {
 
-                var currentElement = dummyTextFillTags[i];
-                var dummyAttribute = currentElement.getAttribute('data-dummy');
-                var parameters = dummyAttribute.split('-'); //I have doubts with this line. "3-para".split(-)?
+                // we're looking at something like:
+                // data-dummy-fill="3,sentences"
 
-                currentElement.textContent = this.lorem(parameters[1], parameters[0]);
+                const currentElement = dummyTextFillTags[ i ]
+                    , dummyConfig    = currentElement.getAttribute( 'data-dummy-fill' ).split( ',' );
+
+                currentElement.innerText = this.generateLoremBlock( parameters[ 1 ], parameters[ 0 ] );
 
             }
 
         },
 
-        lorem: function (type, number) { //Returns lorem ipsum text.
+        generateLoremBlock( type, count ) { 
 
             const ipsumArray = []; //Stores considerably large dictionary of ipsum words.
 
