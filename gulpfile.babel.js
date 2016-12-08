@@ -50,9 +50,10 @@ gulp.task( 'compile:dev', () => {
 
 gulp.task( 'watch', () => {
 
-
     gulp.watch( [ './src/**/*.*' ], [ 'compile:prod', 'compile:dev', 'test' ] );
 
 } );
+
+gulp.task( 'compile', [ 'compile:prod', 'compile:dev' ] );
 
 gulp.task( 'default', [ 'compile:prod', 'test' ] );
