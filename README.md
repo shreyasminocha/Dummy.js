@@ -39,6 +39,13 @@ If you would like to disable Dummy.js, this can be done without removing it from
 <script src="/path/to/Dummy.js" data-dummy="disable"></script>
 ```
 
+<<<<<<< HEAD
+=======
+## Upcoming
+In the upcoming versions, we're planning to add a configuration flow. For example, the you'd be able
+to configure the number of words in a sentence in a paragraph; unlike what's the case right now.
+
+>>>>>>> release/1.0
 ## MIT License
 
 I have licensed this library under the MIT License (look for the `LICENSE` file). For those who don't know, it means that you can use this project for commercial projects, modify it, distribute it as well as use it for private use. Enjoy!
