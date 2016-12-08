@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Dummy.js : A simple, no-nonsense library for injecting dummy text in web pages.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Dummy.js</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/shreyasminocha/Dummy.js">View on GitHub</a>
+
+          <h1 id="project_title">Dummy.js</h1>
+          <h2 id="project_tagline">A simple, no-nonsense library for injecting dummy text in web pages.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/shreyasminocha/Dummy.js/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/shreyasminocha/Dummy.js/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="dummyjs" class="anchor" href="#dummyjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dummy.js</h1>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Dummy.js is a simple, no-nonsense library for injecting dummy text in html pages. It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. I found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, I wrote this library.</p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>Download the code from <a href="https://github.com/shreyasminocha/Dummy.js">github</a> and use it like this:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>  &lt;<span class="pl-ent">body</span>&gt;
+
+    <span class="pl-c">&lt;!-- The /s plural is just for the semantics. You are well-off with 5,sentence --&gt;</span>
+
+    &lt;<span class="pl-ent">h1</span> <span class="pl-e">data-dummy-fill</span>=<span class="pl-s"><span class="pl-pds">"</span>5,word(/s)<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">h1</span>&gt;
+    &lt;<span class="pl-ent">p</span> <span class="pl-e">data-dummy-fill</span>=<span class="pl-s"><span class="pl-pds">"</span>6,sentence<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">p</span>&gt;
+    &lt;<span class="pl-ent">p</span> <span class="pl-e">data-dummy-fill</span>=<span class="pl-s"><span class="pl-pds">"</span>1,paragraph<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">p</span>&gt;
+    ...
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>/path/to/dummy.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+
+  &lt;/<span class="pl-ent">body</span>&gt;</pre></div>
+
+<p>There! Dummy.js is at your service.
+Here's a <a href="https://github.com/shreyasminocha/Dummy.js#">working demo(broken at the moment)</a>.</p>
+
+<h2>
+<a id="cdn" class="anchor" href="#cdn" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CDN</h2>
+
+<p>This section will be updated once Dummy.js has an official CDN.</p>
+
+<h2>
+<a id="disable" class="anchor" href="#disable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Disable</h2>
+
+<p>If you would like to disable Dummy.js, this can be done without removing it from your web page.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>/path/to/Dummy.js<span class="pl-pds">"</span></span> <span class="pl-e">data-dummy</span>=<span class="pl-s"><span class="pl-pds">"</span>disable<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h2>
+<a id="upcoming" class="anchor" href="#upcoming" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Upcoming</h2>
+
+<p>In the upcoming versions, we're planning to add a configuration flow. For example, the you'd be able
+to configure the number of words in a sentence in a paragraph; unlike what's the case right now.</p>
+
+<h2>
+<a id="code" class="anchor" href="#code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code</h2>
+
+<p>You can find the code for this library on <a href="https://github.com/shreyasminocha/Dummy.js">github</a>. You are more than welcome to fork the source code and contribute to the library. Thanks!</p>
+
+<h2>
+<a id="thanks" class="anchor" href="#thanks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Thanks</h2>
+
+<p>I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Dummy.js maintained by <a href="https://github.com/shreyasminocha">shreyasminocha</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
