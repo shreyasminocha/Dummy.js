@@ -126,9 +126,9 @@
     },
     loremWords: function loremWords(dict, number) {
 
-      var ipsumString = '';
+      var ipsumString = this.capitalize(dict[Math.floor(Math.random() * dict.length)]) + ' ';
 
-      for (var i = 0; i < number; i++) {
+      for (var i = 0; i < number - 1; i++) {
 
         ipsumString = ipsumString + dict[Math.floor(Math.random() * dict.length)] + ' ';
       }

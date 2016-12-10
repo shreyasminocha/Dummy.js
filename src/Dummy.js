@@ -147,9 +147,9 @@ Dummy = {
 
     loremWords(dict, number) {
 
-      let ipsumString = '';
+      let ipsumString = this.capitalize(dict[Math.floor(Math.random() * (dict.length))]) + ' ';
 
-      for (let i = 0; i < number; i++) {
+      for (let i = 0; i < (number - 1); i++) {
 
         ipsumString = ipsumString + dict[Math.floor(Math.random() * (dict.length))] + ' ';
 
