@@ -25,7 +25,7 @@ Dummy.js is a simple, no-nonsense library for injecting dummy text in html pages
 ```
 
 There! Dummy.js is at your service.
-Here's a [working demo(broken at the moment)](https://github.com/shreyasminocha/Dummy.js#).
+Here's a [working demo](https://shreyasminocha.me/Dummy.js/demo.html).
 
 ## CDN
 
