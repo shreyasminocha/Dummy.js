@@ -29,7 +29,7 @@ Here's a [working demo](https://shreyasminocha.me/Dummy.js/demo.html).
 
 ## CDN
 
-We have an official CDN URL! You can now use Dummy.js without downloading it to your server. Here's the link: [http://cdn.jsdelivr.net/dummyjs/1.0.0/dummy.min.js](http://cdn.jsdelivr.net/dummyjs/1.0.0/dummy.min.js).
+We have an official CDN URL! You can now use Dummy.js without downloading it to your server. Here's the link: [https://cdn.jsdelivr.net/dummyjs/latest/dummy.min.js](https://cdn.jsdelivr.net/dummyjs/latest/dummy.min.js).
 
 ## Disable
 
