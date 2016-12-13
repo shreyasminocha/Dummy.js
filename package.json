@@ -1,6 +1,6 @@
 {
   "name": "dummy.js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple no-bullshit library for inserting dummy text in a html project.",
   "main": "index.js",
   "dependencies": {},

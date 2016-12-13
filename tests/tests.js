@@ -48,7 +48,7 @@ describe( 'Dummy.js', () => {
 
             it( 'should be of three words', () => {
 
-                expect( element.innerText.split( ',' ).length ).to.equal( 3 );
+                expect( element.innerText.split( ' ' ).length ).to.equal( 3 );
 
             } );
 
