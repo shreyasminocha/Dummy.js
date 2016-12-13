@@ -146,7 +146,8 @@
 
         loremWords( dict, number ) {
 
-            return( dict.splice( Math.floor( Math.random() * ( dict.length ) ), number ) );
+            return( this.capitalize(
+                dict.splice( Math.floor( Math.random() * ( dict.length ) ), number ).join( ' ' ) ) );
 
         },
 
@@ -158,7 +159,7 @@
 
                 const sentenceLength = Math.floor( ( Math.random() * ( 4 ) + ( 10 ) ) );
 
-                ipsumString += this.capitalize( this.loremWords( dict, sentenceLength ).join( ' ' ) ) + '. ';
+                ipsumString += this.loremWords( dict, sentenceLength ) + '. ';
 
             }
 
