@@ -2,10 +2,10 @@
 
 (function (_root) {
 
-    var Dummy = {};
-    var dummyTextFillTags = [];
-    var isEnabled = true;
-    var debug = true;
+    var Dummy = {},
+        dummyTextFillTags = [],
+        isEnabled = true,
+        debug = true;
 
     Dummy = {
         getConfig: function getConfig() {
@@ -28,8 +28,8 @@
 
             for (var i = 0; i < scriptTags.length; i++) {
 
-                var currentTag = scriptTags[i];
-                var src = currentTag.getAttribute('src');
+                var currentTag = scriptTags[i],
+                    src = currentTag.getAttribute('src');
 
                 if (src && src.toLowerCase().indexOf('dummy') > 0) {
 
@@ -70,8 +70,8 @@
 
             for (var i = 0; i < textTags.length; i++) {
 
-                var currentElement = textTags[i];
-                var dummyDataValue = currentElement.getAttribute('data-dummy-fill');
+                var currentElement = textTags[i],
+                    dummyDataValue = currentElement.getAttribute('data-dummy-fill');
 
                 if (dummyDataValue !== null && dummyDataValue !== '' && dummyDataValue !== 'disable') {
 
@@ -91,8 +91,8 @@
 
             for (var i = 0; i < dummyTextFillTags.length; i++) {
 
-                var currentElement = dummyTextFillTags[i];
-                var dummyConfig = currentElement.getAttribute('data-dummy-fill').split(',');
+                var currentElement = dummyTextFillTags[i],
+                    dummyConfig = currentElement.getAttribute('data-dummy-fill').split(',');
 
                 if (dummyConfig[0] === 'disable' || dummyConfig[0] === '') continue;
 
@@ -139,27 +139,23 @@
 
             return ipsumString;
         },
-
-
         loremParagraphs: function loremParagraphs(dict, number) {
 
             var ipsumString = '';
 
             for (var i = 0; i < number; i++) {
 
-                var paragraphLength = Math.floor(Math.random() * 4 + 7);
+                var paragraphLength = Math.floor(Math.random() * 4 + 10);
 
                 ipsumString += this.loremSentences(dict, paragraphLength).trim() + '\r\n\r\n';
             }
 
             return ipsumString;
         },
-
         capitalize: function capitalize(str) {
 
             return str.charAt(0).toUpperCase() + str.substring(1, str.length);
         },
-
         init: function init() {
             var _this2 = this;
 
@@ -177,7 +173,6 @@
                 _root.dummy = _this2;
             };
         }
-
     };
 
     Dummy.init();
