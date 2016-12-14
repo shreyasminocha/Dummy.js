@@ -1,8 +1,12 @@
 # Dummy.js
 
+*A simple, no-nonsense library for injecting dummy text in html pages.*
+
+*****
+
 ## Introduction
 
-Dummy.js is a simple, no-nonsense library for injecting dummy text in html pages. It is extremely easy to start using `Dummy.js`. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. I found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, I wrote this library.
+It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. I found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, I wrote this library.
 
 ## Website
 
@@ -40,11 +44,23 @@ If you would like to disable Dummy.js, this can be done without removing it from
 ```
 
 ## Upcoming
-In the upcoming versions, we're planning to add a configuration flow. For example, the you'd be able
-to configure the number of words in a sentence in a paragraph; unlike what's the case right now.
+
+In upcoming versions, we plan to introduce some new features:
+
+- [ ] Add a configuration flow, for example, allow configuration of the number of words in a sentence in a paragraph.
 
 ## Versions
-The current version of the library is `1.0.1`.
+The current version of the library is `1.0.2`.
+
+### Version Hitory
+
+* v1.0.2
+ * Fixes issue #3.
+* v1.0.1
+ * Fixed a bug which cause the first two words in a sentence to be capital.
+* v1.0.0
+ * Initial release.
+
 
 ## MIT License
 
@@ -52,8 +68,10 @@ I have licensed this library under the MIT License (look for the `LICENSE` file)
 
 ## Contributing
 
-Thanks for taking the time to explore my library. If this has helped you, please consider contributing to this library. If you would like to contribute code to this library, or fix a bug, please use [airbnb formatted javascript](http://airbnb.io/javascript). I use [jscs](http://jscs.info) for formatting my javascript code. I have included a `.jscsrc` file with the airbnb preset set up. To use jscs, run `npm install -g jscs`, assuming you have npm installed on your system.
+Thanks for taking the time to explore my library. If this has helped you, please consider contributing to this library. Please try to follow the code conventions used throughout this library.
 
 ## Thanks
 
 I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word.
+
+Made with ♥ by @shreyasminocha.
