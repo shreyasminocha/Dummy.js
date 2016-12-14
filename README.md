@@ -54,11 +54,11 @@ The current version of the library is `1.0.2`.
 
 ### Version History
 
-* v1.0.2
+* __v1.0.2__
  * Fixes issue #3.
-* v1.0.1
- * Fixed a bug which cause the first two words in a sentence to be capital.
-* v1.0.0
+* __v1.0.1__
+ * Fixed a bug which caused the first two words in each sentence to be capital.
+* __v1.0.0__
  * Initial release.
 
 
