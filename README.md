@@ -52,7 +52,7 @@ In upcoming versions, we plan to introduce some new features:
 ## Versions
 The current version of the library is `1.0.2`.
 
-### Version Hitory
+### Version History
 
 * v1.0.2
  * Fixes issue #3.
