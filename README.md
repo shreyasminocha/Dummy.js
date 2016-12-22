@@ -4,6 +4,8 @@
 
 *****
 
+![Dummy.js demo](demo.gif)
+
 ## Introduction
 
 It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. I found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, I wrote this library.
