@@ -4,7 +4,7 @@
 
 *****
 
-![Dummy.js demo](demo.gif)
+![Dummy.js demo gif](demo.gif)
 
 ## Introduction
 

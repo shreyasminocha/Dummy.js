@@ -90,7 +90,7 @@ describe( 'Dummy.js', () => {
 
             it( 'should be of three paragraphs', () => {
 
-                // TODO: write this
+                expect( element.innerText.split( '\n\n' ).length ).to.equal( 4 );
 
             } );
 
