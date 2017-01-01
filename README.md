@@ -8,7 +8,7 @@
 
 ## Introduction
 
-It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. I found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, I wrote this library.
+It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. We found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, we wrote this library.
 
 ## Website
 
@@ -49,13 +49,17 @@ If you would like to disable Dummy.js, this can be done without removing it from
 
 In upcoming versions, we plan to introduce some new features:
 
-- [ ] Add a configuration flow, for example, allow configuration of the number of words in a sentence in a paragraph.
+- [x] Add a configuration flow, for example, allow configuration of the number of words in a sentence in a paragraph.
+
+- [ ] Add support for dummy images.
 
 ## Versions
-The current version of the library is `1.0.2`.
+The current version of the library is `1.1.0`.
 
 ### Version History
 
+* __v1.1.0__
+ * Added configuration flow, allowing customization of number of sentences in a paragraph.
 * __v1.0.2__
  * Fixes issue #3.
 * __v1.0.1__
@@ -66,7 +70,7 @@ The current version of the library is `1.0.2`.
 
 ## MIT License
 
-I have licensed this library under the MIT License (look for the `LICENSE` file). For those who don't know, it means that you can use this project for commercial projects, modify it, distribute it as well as use it for private use. Enjoy!
+We have licensed this library under the MIT License (look for the `LICENSE` file). For those who don't know, it means that you can use this project for commercial projects, modify it, distribute it as well as use it for private use. Enjoy!
 
 ## Contributing
 
@@ -74,6 +78,6 @@ Thanks for taking the time to explore my library. If this has helped you, please
 
 ## Thanks
 
-I would like to thank all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word.
+We extend our gratitude to all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word.
 
 Made with ♥ by @shreyasminocha.
