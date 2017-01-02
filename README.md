@@ -33,6 +33,36 @@ It is extremely easy to start using Dummy.js. It is as easy as adding a script t
 There! Dummy.js is at your service.
 Here's a [working demo](https://shreyasminocha.me/Dummy.js/demo.html).
 
+## Configuration
+
+As of version 1.1.0, you can choose to manually configure the number of words in each sentence and the number of sentences in each paragraph.
+
+### Number of words in a sentence
+
+The following example will fill the `<p>` tag with 5 sentences of dummy text with each sentence having 4-12 words at random.
+
+```html
+  <p data-dummy-fill="5,sentences,4-12"></p>
+```
+
+### Number of sentences in a paragraph
+
+You can also manually configure the number of sentences in each paragraph. If you would like to have a paragraph with 15-18 sentences(inclusive), you could use the following markup:
+
+```html
+  <p data-dummy-fill="1,paragraph,15-18"></p>
+```
+
+### Number of words in each sentence of a paragraph
+
+With our latest release, this level of configuration is also possible. However, as of now, you can take advantage of this feature only if you customize the number of sentences in the paragraph as well. This is expected to change in upcoming releases.
+
+```html
+  <p data-dummy-fill="1,paragraph,15-18,6-9"></p>
+```
+
+The example above would fill our `<p>` tag with a paragraph of 15-18 sentences(at random) with each sentence having a length of anywhere from 6 to 9 words.
+
 ## CDN
 
 We have an official CDN URL! You can now use Dummy.js without downloading it to your server. Here's the link: [https://cdn.jsdelivr.net/dummyjs/latest/dummy.min.js](https://cdn.jsdelivr.net/dummyjs/latest/dummy.min.js).
