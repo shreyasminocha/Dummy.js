@@ -78,9 +78,9 @@ describe( 'Dummy.js', () => {
 
             it( 'should have sentences of word length between 5 and 8', () => {
 
-                const wordsA = element.innerText.split( '.' )[ 0 ].split( ' ' );
-                const wordsB = element.innerText.split( '.' )[ 1 ].split( ' ' );
-                const wordsC = element.innerText.split( '.' )[ 2 ].split( ' ' );
+                const wordsA = element.innerText.split( '. ' )[ 0 ].split( ' ' );
+                const wordsB = element.innerText.split( '. ' )[ 1 ].split( ' ' );
+                const wordsC = element.innerText.split( '. ' )[ 2 ].split( ' ' );
 
                 expect( wordsA.length ).to.gte( 5 ).and.lte( 8 );
                 expect( wordsB.length ).to.gte( 5 ).and.lte( 8 );
@@ -119,26 +119,29 @@ describe( 'Dummy.js', () => {
             it( 'should have sentences of length between 3 and 5', () => {
 
                 const paragraphA = element.innerText.split( '\n\n' )[ 0 ];
-                const paragraphB = element.innerText.split( '\n\n' )[ 0 ];
-                const paragraphC = element.innerText.split( '\n\n' )[ 0 ];
+                const paragraphB = element.innerText.split( '\n\n' )[ 1 ];
+                const paragraphC = element.innerText.split( '\n\n' )[ 2 ];
 
-                expect( paragraphA.split( '. ' )[ 0 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                for( let i = 0; i < paragraphA.split( '. ' ).length; i++ ) {
 
-                expect( paragraphA.split( '. ' )[ 1 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                    const sentence = paragraphA.split( '. ' )[ i ];
+                    expect( sentence.split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
 
-                expect( paragraphA.split( '. ' )[ 2 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                }
 
-                expect( paragraphB.split( '. ' )[ 0 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                for( let i = 0; i < paragraphB.split( '. ' ).length; i++ ) {
 
-                expect( paragraphB.split( '. ' )[ 1 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                    const sentence = paragraphB.split( '. ' )[ i ];
+                    expect( sentence.split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
 
-                expect( paragraphB.split( '. ' )[ 2 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                }
 
-                expect( paragraphC.split( '. ' )[ 0 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                for( let i = 0; i < paragraphC.split( '. ' ).length; i++ ) {
 
-                expect( paragraphC.split( '. ' )[ 1 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                    const sentence = paragraphC.split( '. ' )[ i ];
+                    expect( sentence.split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
 
-                expect( paragraphC.split( '. ' )[ 2 ].split( ' ' ).length ).to.gte( 3 ).and.lte( 5 );
+                }
 
             } );
 
