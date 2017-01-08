@@ -4,11 +4,11 @@
 
 *****
 
-![Dummy.js demo gif](demo.gif)
+![Dummy.js demo gif](images/demo.gif)
 
 ## Introduction
 
-It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. We found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for myself and all those facing it, we wrote this library.
+It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. We found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for all those facing it, we wrote this library.
 
 ## Website
 
@@ -31,8 +31,7 @@ It is extremely easy to start using Dummy.js. It is as easy as adding a script t
     </body>
 ```
 
-There! Dummy.js is at your service.
-Here's a [working demo](https://shreyasminocha.me/Dummy.js/demo.html).
+There! Dummy.js is at your service. Here's a [working demo](https://shreyasminocha.me/Dummy.js/demo.html).
 
 ## Configuration
 
@@ -92,13 +91,13 @@ The current version of the library is `2.0.0`.
 * __v2.0.0__
   * Made the configuration API more semantic.
 * __v1.1.0__
- * Added configuration flow, allowing customization of number of sentences in a paragraph.
+  * Added configuration flow, allowing customization of number of sentences in a paragraph.
 * __v1.0.2__
- * Fixes issue #3.
+  * Fixes issue #3.
 * __v1.0.1__
- * Fixed a bug which caused the first two words in each sentence to be capital.
+  * Fixed a bug which caused the first two words in each sentence to be capital.
 * __v1.0.0__
- * Initial release.
+  * Initial release.
 
 
 ## MIT License
