@@ -6,14 +6,6 @@ import mocha      from 'gulp-mocha';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber    from 'gulp-plumber';
 
-gulp.task( 'test', () => {
-
-    return gulp.src( './test/bootstrap.js' )
-               .pipe( plumber() )
-               .pipe( mocha( { reporter: 'spec' } ) );
-
-} );
-
 gulp.task( 'compile:prod', () => {
 
     return gulp.src( [ './src/**/*.js' ] )
@@ -50,10 +42,10 @@ gulp.task( 'compile:dev', () => {
 
 gulp.task( 'watch', () => {
 
-    gulp.watch( [ './src/**/*.*' ], [ 'compile:prod', 'compile:dev', 'test' ] );
+    gulp.watch( [ './src/**/*.*' ], [ 'compile:prod', 'compile:dev' ] );
 
 } );
 
 gulp.task( 'compile', [ 'compile:prod', 'compile:dev' ] );
 
-gulp.task( 'default', [ 'compile:prod', 'test' ] );
+gulp.task( 'default', [ 'compile:prod' ] );
