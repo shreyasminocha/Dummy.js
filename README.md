@@ -12,7 +12,7 @@ It is extremely easy to start using Dummy.js. It is as easy as adding a script t
 
 ## Website
 
-[Dummy.js Official website](https://shreyasminocha.me/Dummy.js)
+[Dummy.js Official website](http://shreyasminocha.me/projects/dummyjs)
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ It is extremely easy to start using Dummy.js. It is as easy as adding a script t
     </body>
 ```
 
-There! Dummy.js is at your service. Here's a [working demo](https://shreyasminocha.me/Dummy.js/demo.html).
+There! Dummy.js is at your service.
 
 ## Configuration
 
