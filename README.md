@@ -1,115 +1,62 @@
 # Dummy.js
 
-*A simple, no-nonsense library for injecting dummy text in html pages.*
+> A simple script for injecting dummy text into html pages.
 
-*****
-
-![Dummy.js demo gif](images/demo.gif)
-
-## Introduction
-
-It is extremely easy to start using Dummy.js. It is as easy as adding a script tag at the end of your body and adding an attribute to the elements you want dummy text in. We found it very cumbersome working with dummy text while designing web pages. In order to fix this issue for all those facing it, we wrote this library.
-
-## Website
-
-[Dummy.js Official website](http://shreyasminocha.me/projects/dummyjs)
+![Screenshot of dummy.js in action](https://i.imgur.com/VI0UyJY.jpg)
 
 ## Getting Started
 
 ```html
-    <body>
+<head>
+    <script src="/path/to/dummy.min.js"></script>
+</head>
 
-        <!-- The /s plural is just for the semantics. -->
-        <!-- You are well of with `5-sentence` -->
-
-        <h1 data-dummy-fill="5,word(/s)"></h1>
-        <p data-dummy-fill="6,sentence"></p>
-        <p data-dummy-fill="1,paragraph"></p>
-        ...
-        <script src="/path/to/dummy.min.js"></script>
-
-    </body>
+<body>
+    <h1 data-dummy="5 words"></h1>
+    <p data-dummy="6 sentences"></p>
+    <!-- Both `1 paragraph` and `1 paragraphs` will work -->
+    <p data-dummy="1 paragraph"></p>
+</body>
 ```
 
 There! Dummy.js is at your service.
 
-## Configuration
-
-As of version 2.0.0, you can choose to manually configure the number of words in each sentence and the number of sentences in each paragraph.
-
-### Number of words in a sentence
-
-The following example will fill the `<p>` tag with 5 sentences of dummy text with each sentence having 4-12 words at random.
-
-```html
-<p data-dummy-fill="5,sentences,4-12 words"></p>
-```
-
-### Number of sentences in a paragraph
-
-You can also manually configure the number of sentences in each paragraph. If you would like to have a paragraph with 15-18 sentences(inclusive), you could use the following markup:
-
-```html
-<p data-dummy-fill="1,paragraph,15-18 sentences"></p>
-```
-
-### Number of words in each sentence of a paragraph
-
-You can generate a paragraph with 6-9 words per sentence by using the following markup:
-
-```html
-<p data-dummy-fill="1,paragraph,6-9 words"></p>
-```
-
-The example above would fill our `<p>` tag with a paragraph of 15-18 sentences(at random) with each sentence having a length of anywhere from 6 to 9 words.
-
 ## CDN
 
-We have an official CDN URL! You can now use Dummy.js without downloading it to your server. Here's the link: [https://cdn.jsdelivr.net/dummyjs/latest/dummy.min.js](https://cdn.jsdelivr.net/dummyjs/latest/dummy.min.js).
+`https://cdn.jsdelivr.net/gh/shreyasminocha/Dummy.js@[insert version number]0/dist/dummy.min.css`
 
-## Disable
+Make sure to replace `[insert version number]` with the [tag of the latest version](https://github.com/shreyasminocha/Dummy.js/releases/latest).
 
-If you would like to disable Dummy.js, this can be done without removing it from your web page.
+## Usage
+
+### Words
+
+The following snippet would fill `<h1>` with 5 words of dummy text.
 
 ```html
-<script src="/path/to/Dummy.js" data-dummy="disable"></script>
+<h1 data-dummy="5 words"></h1>
 ```
 
-## Upcoming
+### Sentences
 
-In upcoming versions, we plan to introduce some new features:
+The following snippet would fill `<p>` with 8 sentences of dummy text.
 
-- [x] Add a configuration flow, for example, allow configuration of the number of words in a sentence in a paragraph.
+```html
+<p data-dummy-fill="8 sentences"></p>
+```
 
-- [ ] Add support for dummy images.
+### Paragraphs
 
-## Versions
+The following snippet would fill `<p>` with 3 paragraphs of dummy text.
 
-The current version of the library is `2.0.0`.
+```html
+<p data-dummy-fill="3 paragraphs"></p>
+```
 
-### Version History
+## Ready to ditch pseudo-Latin?
 
-* __v2.0.0__
-  * Made the configuration API more semantic.
-* __v1.1.0__
-  * Added configuration flow, allowing customization of number of sentences in a paragraph.
-* __v1.0.2__
-  * Fixes issue #3.
-* __v1.0.1__
-  * Fixed a bug which caused the first two words in each sentence to be capital.
-* __v1.0.0__
-  * Initial release.
+You can temporarily disable Dummy.js, by simply commenting out the script tag that imports it. Once you have your copy ready, you could use the regular expression`data-dummy=([\"\'])[\d\w ]*\1` to match all `data-dummy` attributes(and remove them).
 
 ## License
 
 [MIT License](https://shreyas.mit-license.org/2016)
-
-## Contributing
-
-Thanks for taking the time to explore my library. If this has helped you, please consider contributing to this library. Please try to follow the code conventions used throughout this library.
-
-## Thanks
-
-We extend our gratitude to all those who have taken the time to contribute to this library by fixing bugs, contributing code, or spreading the word.
-
-Made with ♥ by @shreyasminocha.

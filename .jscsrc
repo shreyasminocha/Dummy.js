@@ -1,9 +1,0 @@
-{
-	"preset": "mdcs",
-	"validateIndentation": null,
-	"requireSpaceAfterKeywords": null,
-	"requireSpacesInsideParentheses": null,
-	"requireSpaceBeforePostfixUnaryOperators": null,
-	"requireSpaceAfterPrefixUnaryOperators": null,
-	"requirePaddingNewlinesInBlocks": null
-}

@@ -1,51 +1,33 @@
 {
-  "name": "dummy.js",
-  "version": "1.0.2",
-  "description": "A simple no-bullshit library for inserting dummy text in a html project.",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "babel-core": "^6.18.2",
-    "babel-preset-es2015": "^6.18.0",
-    "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-mocha": "^3.0.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-uglify": "^2.0.0",
-    "jsdom": "^9.8.3",
-    "mocha-jsdom": "^1.1.0"
-  },
-  "scripts": {
-    "test": "mocha tests/bootstrap.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shreyasminocha/Dummy.js.git"
-  },
-  "keywords": [
-    "simple",
-    "easy",
-    "quick",
-    "lorem",
-    "ipsum",
-    "text",
-    "dummy",
-    "place",
-    "holder",
-    "placeholder",
-    "free",
-    "open",
-    "source",
-    "open",
-    "source"
-  ],
-  "author": "Shreyas Minocha",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shreyasminocha/Dummy.js/issues"
-  },
-  "homepage": "https://github.com/shreyasminocha/Dummy.js#readme"
+    "name": "dummy.js",
+    "version": "3.0.0",
+    "description": "A script to insert dummy text in a html project.",
+    "main": "index.js",
+    "dependencies": {},
+    "devDependencies": {
+    	"babel-core": "^6.18.2",
+    	"babel-preset-es2015": "^6.18.0",
+    	"gulp": "^3.9.1",
+    	"gulp-babel": "^6.1.2",
+    	"gulp-concat": "^2.6.1",
+    	"gulp-plumber": "^1.1.0",
+    	"gulp-sourcemaps": "^1.9.1",
+    	"gulp-uglify": "^2.0.0"
+    },
+    "repository": {
+	    "type": "git",
+	    "url": "git+https://github.com/shreyasminocha/Dummy.js.git"
+    },
+    "keywords": [
+	    "lorem",
+	    "ipsum",
+	    "dummy",
+	    "placeholder"
+    ],
+    "author": "Shreyas Minocha",
+    "license": "MIT",
+    "bugs": {
+	    "url": "https://github.com/shreyasminocha/Dummy.js/issues"
+    },
+    "homepage": "https://github.com/shreyasminocha/Dummy.js#readme"
 }
