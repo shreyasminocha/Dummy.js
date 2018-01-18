@@ -42,7 +42,7 @@ The following snippet would fill `<h1>` with 5 words of dummy text.
 The following snippet would fill `<p>` with 8 sentences of dummy text.
 
 ```html
-<p data-dummy-fill="8 sentences"></p>
+<p data-dummy="8 sentences"></p>
 ```
 
 ### Paragraphs
@@ -50,7 +50,7 @@ The following snippet would fill `<p>` with 8 sentences of dummy text.
 The following snippet would fill `<p>` with 3 paragraphs of dummy text.
 
 ```html
-<p data-dummy-fill="3 paragraphs"></p>
+<p data-dummy="3 paragraphs"></p>
 ```
 
 ## Ready to ditch pseudo-Latin?
