@@ -2,7 +2,7 @@
 
 > A simple script for injecting dummy text into html pages.
 
-![Screenshot of dummy.js in action](https://i.imgur.com/VI0UyJY.jpg)
+![Screenshot of Dummy.js in action](https://i.imgur.com/VI0UyJY.jpg)
 
 ## Getting Started
 

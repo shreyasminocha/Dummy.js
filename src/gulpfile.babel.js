@@ -7,8 +7,8 @@ import prettier from 'gulp-prettier';
 
 gulp.task('compile', () => {
     return gulp
-        .src(['src/**/*.js'])
-        .pipe(babel({ presets: ['env'] }))
+        .src([ 'src/**/*.js' ])
+        .pipe(babel({ presets: [ 'env' ] }))
         .pipe(concat('dummy.min.js'))
         .pipe(sourcemaps.init())
         .pipe(uglify({ compress: { negate_iife: false }, outSourceMaps: true }))
@@ -17,19 +17,22 @@ gulp.task('compile', () => {
 });
 
 gulp.task('watch', () => {
-    gulp.watch(['./src/**/*.*'], ['pretty', 'compile']);
+    gulp.watch([ './src/**/*.*' ], [ 'pretty', 'compile' ]);
 });
 
 gulp.task('pretty', () => {
     return gulp
-        .src(['src/**/*.js'])
-        .pipe(prettier({
-            'singleQuote': true,
-            'tabWidth': 4,
-            'arrowParens': 'always',
-            'trailingComma': 'es5'
-        }))
-        .pipe(gulp.dest('src'))
+        .src([ 'src/**/*.js', 'gulpfile.babel.js' ])
+        .pipe(
+            prettier({
+                'singleQuote': true,
+                'tabWidth': 4,
+                'arrowParens': 'always',
+                'trailingComma': 'none',
+                'semi': true,
+            }),
+        )
+        .pipe(gulp.dest('src'));
 });
 
-gulp.task('default', ['compile', 'pretty']);
+gulp.task('default', [ 'compile', 'pretty' ]);
