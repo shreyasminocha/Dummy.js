@@ -3,7 +3,6 @@ import babel from 'gulp-babel';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import sourcemaps from 'gulp-sourcemaps';
-import prettier from 'gulp-prettier';
 
 gulp.task('compile', () => {
     return gulp
@@ -20,16 +19,4 @@ gulp.task('watch', () => {
     gulp.watch(['./src/**/*.*'], ['pretty', 'compile']);
 });
 
-gulp.task('pretty', () => {
-    return gulp
-        .src(['src/**/*.js'])
-        .pipe(prettier({
-            'singleQuote': true,
-            'tabWidth': 4,
-            'arrowParens': 'always',
-            'trailingComma': 'es5'
-        }))
-        .pipe(gulp.dest('src'))
-});
-
-gulp.task('default', ['compile', 'pretty']);
+gulp.task('default', ['compile']);
