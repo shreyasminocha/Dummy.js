@@ -23,7 +23,7 @@ There! Dummy.js is at your service.
 
 ## CDN
 
-`https://cdn.jsdelivr.net/gh/shreyasminocha/Dummy.js@[insert version number]/dist/dummy.min.css`
+`https://cdn.jsdelivr.net/gh/shreyasminocha/Dummy.js@[insert version number]/dist/dummy.min.js`
 
 Make sure to replace `[insert version number]` with the [tag of the latest version](https://github.com/shreyasminocha/Dummy.js/releases/latest).
 
