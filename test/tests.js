@@ -51,5 +51,5 @@ test('3 paragraphs', async t => {
 });
 
 test.after.always('Close browser', () => {
-    browser.close()
+    browser.close();
 });
