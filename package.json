@@ -18,7 +18,7 @@
     },
     "scripts": {
         "build": "gulp",
-        "test": "gulp && ava"
+        "test": "if test \"$NODE_ENV\" = \"travis\"; then ava; else gulp && ava; fi "
     },
     "repository": {
         "type": "git",
